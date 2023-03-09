@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'phonenumber_field',
     'django_rest_passwordreset',
     'django_password_validators',
     'master',
