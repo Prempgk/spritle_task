@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Create task</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/master/createtask.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script src="{% static 'js/master/createtask.js' %}" defer></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link
+      href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo-name">
+        <div class="logo-image">
+          <!--<img src="images/logo.png" alt="">-->
+        </div>
+
+        <span class="logo_name">Welcome {{data.Name}}</span>
+      </div>
+
+      <div class="menu-items">
+        <ul class="nav-links">
+          <li>
+            <a href="/master/dashboard">
+              <i class="uil uil-estate"></i>
+              <span class="link-name">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="/master/task/create">
+              <i class="uil uil-plus-square"></i>
+              <span class="link-name">Create Task</span>
+            </a>
+          </li>
+          <li>
+            <a href="/master/task/submitted">
+              <i class="uil uil-layers-alt"></i>
+              <span class="link-name">Submitted Tasks</span>
+            </a>
+          </li>
+          <li>
+            <a href="/master/task/evaluated">
+              <i class="uil uil-comment-alt-verify"></i>
+              <span class="link-name">Evaluated Task</span>
+            </a>
+          </li>
+<!--          <li>-->
+<!--            <a href="#">-->
+<!--              <i class="uil uil-comment-alt-exclamation"></i>-->
+<!--              <span class="link-name">Wrong</span>-->
+<!--            </a>-->
+<!--          </li>-->
+          <li>
+            <a href="/master/profile">
+              <i class="uil uil-user-circle"></i>
+              <span class="link-name">Profile</span>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="logout-mode">
+          <li>
+            <a href="/master/logout">
+              <i class="uil uil-signout"></i>
+              <span class="link-name">Logout</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <a href="#">
+              <i class="uil uil-moon"></i>
+              <span class="link-name">Dark Mode</span>
+            </a>
+
+            <div class="mode-toggle">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="dashboard">
+      <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+
+        <div class="search-box">
+          <i class="uil uil-search"></i>
+          <input type="text" placeholder="Search here..." />
+        </div>
+
+        <!--<img src="images/profile.jpg" alt="">-->
+      </div>
+      <div class="dash-content">
+        <div class="overview">
+          <div class="rt-container">
+            <div class="col-rt-12 pt-5">
+              <div class="Scriptcontent">
+                <div
+                  class="container d-flex justify-content-center text-align-center"
+                >
+                  <div class="row" style="width: 100%">
+                    <div class="col">
+                      <div class="card shadow-sm">
+                        <div class="card-header bg-transparent border-0">
+                          <h3 class="mb-0">
+                            <i class="far fa-clone pr-1"></i>Task Creation
+                          </h3>
+                        </div>
+                        <div class="card-body pt-0">
+                          <form
+                            action=""
+                            method="post"
+                            enctype="multipart/form-data"
+                          >
+                            {% csrf_token %}
+                            <table class="table table-bordered">
+                              <tr>
+                                <th width="30%">Operation</th>
+                                <td width="2%">:</td>
+                                <td>
+                                  <select
+                                    class="form-control"
+                                    name="Operation"
+                                    id="Operation"
+                                  >
+                                    <option value="Addition">Addition</option>
+                                    <option value="Subtraction">
+                                      Subtraction
+                                    </option>
+                                    <option value="Multiplication">
+                                      Multiplication
+                                    </option>
+                                    <option value="Division">Division</option>
+                                  </select>
+                                  <small></small>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th width="30%">Left Operand</th>
+                                <td width="2%">:</td>
+                                <td>
+                                  <input
+                                    type="number"
+                                    name="LeftOperand"
+                                    class="form-control"
+                                    id="LeftOperand"
+                                    required
+                                  />
+                                  <small></small>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th width="30%">Right Operand</th>
+                                <td width="2%">:</td>
+                                <td>
+                                  <input
+                                    type="number"
+                                    name="RightOperand"
+                                    class="form-control"
+                                    id="RightOperand"
+                                    required
+                                  />
+                                  <small></small>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th width="30%">
+                                  <label for="StudentData">
+                                    Students
+                                  </label>
+                                </th>
+                                <td width="2%">:</td>
+                                <td>
+
+                                  <select
+                                    class="form-control chosen-select"
+                                    name="StudentData"
+                                    id="StudentData"
+                                    multiple="multiple"
+                                  >
+                                    {% for i in students %}
+                                    <option value="{{i.id}}">{{i.Name}}</option>
+                                    {% endfor %}
+                                  </select>
+                                  <small></small>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th width="30%">Notes</th>
+                                <td width="2%">:</td>
+                                <td>
+                                  <textarea
+                                    name="Notes"
+                                    class="form-control"
+                                    id="Notes"
+                                  ></textarea>
+                                  <small></small>
+                                </td>
+                              </tr>
+                            </table>
+                            {% if messages %}
+                    <div>
+                      <p id="err" style="display: None">{{messages}}</p>
+                      <script>
+                        window.onload = function () {
+                          error_fun();
+                        };
+                      </script>
+                    </div>
+                    {% endif %}
+                            <div class="container">
+                              <div class="row">
+                              <div class="col-md-5 offset-md-5">
+                              <button class="btn btn-primary mt-3 justify-content-center">
+                              create
+                            </button>
+                            </div>
+                            </div>
+                            </div>
+
+
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

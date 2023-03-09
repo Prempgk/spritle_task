@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% load static %}
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/student/task.css' %}" />
+    <script src="{% static 'js/student/dashboard.js' %}" defer></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!--<title>Admin Dashboard Panel</title>-->
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <!--<img src="images/logo.png" alt="">-->
+            </div>
+
+            <span class="logo_name">Welcome {{data.Name}}</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="/master/dashboard">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Dashboard</span>
+                </a></li>
+                <li><a href="/master/task/create">
+                    <i class="uil uil-plus-square"></i>
+                    <span class="link-name">Create Task</span>
+                </a></li>
+                <li><a href="/master/task/submitted">
+                    <i class="uil uil-layers-alt"></i>
+                    <span class="link-name">Submitted Tasks</span>
+                </a></li>
+                <li><a href="/master/task/evaluated">
+                    <i class="uil uil-comment-alt-verify"></i>
+                    <span class="link-name">Evaluated Tasks</span>
+                </a></li>
+<!--                <li><a href="#">-->
+<!--                    <i class="uil uil-comment-alt-exclamation"></i>-->
+<!--                    <span class="link-name">Wrong</span>-->
+<!--                </a></li>-->
+                <li><a href="/master/profile">
+                    <i class="uil uil-user-circle"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+            </ul>
+
+            <ul class="logout-mode">
+                <li><a href="/master/logout">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+
+            <!--<img src="images/profile.jpg" alt="">-->
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Submitted Tasks</span>
+                </div>
+            </div>
+        </div>
+            <div class="container">
+                <div class="row">
+                {% for i in data %}
+                    <div>
+                        <div class="col-sm-6" style="
+                                background-image: linear-gradient(#3064a9,#a64af6,#5790d1);
+                                width: 500px;
+                                border-radius: 5px;
+                                margin: 10px;">
+                            <h3 style="color:white;">Q: {{i.Description}}</h3>
+                            <div>
+                                <p><strong>Your Solution:  {{i.Solution}}</strong></p>
+                                <p><strong>Reviewed: {{i.Is_reviewed}}</strong></p>
+                                <form
+                                    method="post"
+                                    action="" enctype="multipart/form-data"
+                                    style="margin-bottom:10px;
+                                    background-image: linear-gradient(rgb(153 74 246 / 68%), #575eccde);">
+                                {% csrf_token %}
+                                <input type="number" name="id" value={{i.id}}
+                                       style="display:none;" required
+                                >
+                                <button type="submit" class="btn btn-primary">Evaluate</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+
+    </section>
+
+    <!--<script src="script.js"></script>-->
+</body>
+</html>

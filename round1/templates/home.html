@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{%static 'font-awesome/css/font-awesome.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  </head>
+  <body>
+    <div>
+      <!-- Section: Design Block -->
+      <section
+        class="section background-radial-gradient overflow-scroll d-flex align-items-center"
+      >
+        <div class="container px-4 py-5 px-md-5 text-center text-lg-start">
+          <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+              <h1
+                class="my-5 display-5 fw-bold ls-tight"
+                style="color: hsl(218, 81%, 95%)"
+              >
+                Welcome! <br />
+                <span style="color: hsl(218, 81%, 75%)"
+                  >Spritle's Fullstack Developer Task Round-1</span
+                >
+              </h1>
+              <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                Please choose your path!
+              </p>
+            </div>
+
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+              <div
+                id="radius-shape-1"
+                class="position-absolute rounded-circle shadow-5-strong"
+              ></div>
+              <div
+                id="radius-shape-2"
+                class="position-absolute shadow-5-strong"
+              ></div>
+
+              <div class="card bg-glass">
+                <div class="card-body px-4 py-3 px-md-5">
+                  <h1 class="py-4 pb-4">Choose your perfect path</h1>
+                  <form action="/signin" method="post" id="signin" class="form">
+                    {% csrf_token %}
+                      <div id="btdiv" class="d-flex justify-content-center">
+            <div>
+              <ol style="list-style-type: none; padding: 5px">
+                <li class="actbt">
+                  <a class="bt1 d-flex align-items-center justify-content-center" id="home" href="/master/signin">
+                      Master
+                  </a>
+                  <a class="bt1 d-flex align-items-center justify-content-center" id="profile" href="/student/signin">
+                    Student
+                  </a>
+                </li>
+              </ol>
+            </div>
+          </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Design Block -->
+    </div>
+  </body>
+</html>

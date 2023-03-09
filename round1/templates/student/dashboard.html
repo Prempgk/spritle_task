@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css">
+
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="{% static 'css/student/dashboard.css' %}" />
+    <script src="{% static 'js/student/dashboard.js' %}" defer></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!--<title>Admin Dashboard Panel</title>-->
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <!--<img src="images/logo.png" alt="">-->
+            </div>
+
+            <span class="logo_name">Welcome {{data.Name}}</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="/student/dashboard">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Dashboard</span>
+                </a></li>
+                <li><a href="/student/tasks">
+                    <i class="uil uil-layers-alt"></i>
+                    <span class="link-name">View Task</span>
+                </a></li>
+                <li><a href="/student/tasks/solved">
+                    <i class="uil uil-comment-alt-verify"></i>
+                    <span class="link-name">Solved Tasks</span>
+                </a></li>
+<!--                <li><a href="#">-->
+<!--                    <i class="uil uil-comment-alt-verify"></i>-->
+<!--                    <span class="link-name">Correct</span>-->
+<!--                </a></li>-->
+<!--                <li><a href="#">-->
+<!--                    <i class="uil uil-comment-alt-exclamation"></i>-->
+<!--                    <span class="link-name">Wrong</span>-->
+<!--                </a></li>-->
+                <li><a href="/student/profile">
+                    <i class="uil uil-user-circle"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+            </ul>
+
+            <ul class="logout-mode">
+                <li><a href="/student/logout">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+
+            <!--<img src="images/profile.jpg" alt="">-->
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Dashboard</span>
+                </div>
+
+                <div class="boxes">
+                    <div class="box box1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="currentColor" d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5L12 2l7 3.5v5h-1V6l-2.11 1.06L16 8m-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
+                        <span class="text">Total Tasks</span>
+                        <span class="number">{{data.tasks}}</span>
+                    </div>
+                    <div class="box box2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><mask id="ipSCorrect0"><path fill="#fff" fill-rule="evenodd" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m4 24l5-5l10 10L39 9l5 5l-25 25L4 24Z" clip-rule="evenodd"/></mask><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCorrect0)"/></svg>
+                        <span class="text">Solved</span>
+                        <span class="number">{{data.solved}}</span>
+                    </div>
+                    <div class="box box3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><g transform="translate(24 0) scale(-1 1)"><path fill="currentColor" d="m9 7l2 5l-2 5h2l1-2.5l1 2.5h2l-2-5l2-5h-2l-1 2.5L11 7H9M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/></g></svg>
+                        <span class="text">Unsolved</span>
+                        <span class="number">{{data.unsolved}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--<script src="script.js"></script>-->
+</body>
+</html>
