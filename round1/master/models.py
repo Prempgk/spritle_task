@@ -29,4 +29,4 @@ class Task(models.Model):
     Solution = models.BigIntegerField(null=False, blank=False)
 
 
-User.add_to_class('Is_master', models.BooleanField(null=False, blank=False))
+User.add_to_class('Is_master', models.BooleanField(null=False, blank=False, default=False))
