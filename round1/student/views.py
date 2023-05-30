@@ -25,7 +25,7 @@ def signin(request):
         except:
             return render(request, 'student/signin.html', {'messages': {"username": "User not found"}})
         try:
-            user_data = authenticate(username=username, password=password)
+            user_data = authenticate(User, username=username, password=password)
             login(request, user_data)
         except:
             return render(request, 'student/signin.html', {'messages': {"password": "Wrong password"}})
